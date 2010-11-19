@@ -1,0 +1,8 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =6
+let g:netrw_dirhist_1='/home/jimxl/.vim/plugin'
+let g:netrw_dirhist_2='/home/jimxl/project/rails/HandSoapTest'
+let g:netrw_dirhist_3='/home/jimxl/project/ruby'
+let g:netrw_dirhist_4='/home/jimxl/project/qt/NvrClientV2/web_files'
+let g:netrw_dirhist_5='/home/jimxl/project/qt/NvrClientV2'
+let g:netrw_dirhist_6='/home/jimxl/project/rails/NvrGuiServerV2'
