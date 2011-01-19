@@ -1,0 +1,3 @@
+[submodule "minibufexpl.vim"]
+	path = minibufexpl.vim
+	url = https://github.com/fholgado/minibufexpl.vim.git

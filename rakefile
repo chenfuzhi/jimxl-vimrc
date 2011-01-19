@@ -1,0 +1,6 @@
+desc 'install vim plus and vimrc file'
+task :install do
+    system('cp -r vim ~/.vim')
+    system('cp vimrc ~/.vimrc')
+end
+
