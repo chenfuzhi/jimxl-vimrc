@@ -115,3 +115,7 @@ let g:miniBufExplMapCTabSwitchBufs = 1
 let g:miniBufExplModSelTarget = 1
 
 filetype plugin on
+
+
+nmap <C-f> :FindFile<CR> 
+" nmap <C-s> :FindFileSplit<CR>
