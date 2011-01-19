@@ -118,4 +118,6 @@ filetype plugin on
 
 
 nmap <C-f> :FindFile<CR> 
+nmap <F5> :FC .<CR> 
+imap <F5> :FC .<CR> 
 " nmap <C-s> :FindFileSplit<CR>
