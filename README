@@ -1,4 +1,4 @@
 我的vim配置文件
 
-rake install 安装到当前用户目录，安装前需要删除以有配置和插件包括~/.vimrc ~/.vim
+rake install 安装到当前用户目录，安装前需要删除已有配置和插件包括~/.vimrc ~/.vim
 
