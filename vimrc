@@ -63,12 +63,12 @@ let g:mapleader=","
 """"""""""""""""""""""""""""""
 " bufExplorer插件的设置
 """"""""""""""""""""""""""""""
-let g:bufExplorerSortBy='mru'
-let g:bufExplorerSplitRight=0     
-let g:bufExplorerSplitVertical=1
-let g:bufExplorerSplitVertSize = 30 
-let g:bufExplorerUseCurrentWindow=1 
-autocmd BufWinEnter \[Buf\ List\] setl nonumber
+"let g:bufExplorerSortBy='mru'
+"let g:bufExplorerSplitRight=0     
+"let g:bufExplorerSplitVertical=1
+"let g:bufExplorerSplitVertSize = 30 
+"let g:bufExplorerUseCurrentWindow=1 
+"autocmd BufWinEnter \[Buf\ List\] setl nonumber
  
 """"""""""""""""""""""""""""""
 " netrw插件的快捷键
@@ -117,7 +117,13 @@ let g:miniBufExplModSelTarget = 1
 filetype plugin on
 
 
-nmap <C-f> :FindFile<CR> 
+"nmap <A-f> :FindFile<CR> 
+"imap <A-f> <Esc>:FindFile<CR> 
 nmap <F5> :FC .<CR> 
 imap <F5> :FC .<CR> 
+
+nmap <A-1> :bp<CR>
+imap <A-1> <Esc>:bp<CR>
+nmap <A-2> :bn<CR>
+imap <A-2> <Esc>:bn<CR>
 " nmap <C-s> :FindFileSplit<CR>
