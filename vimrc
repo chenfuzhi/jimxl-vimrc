@@ -15,7 +15,7 @@ set autoindent
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 "GUI界面里的字体，默认有抗锯齿
-"set guifont=Monaco:h12:cANSI
+set guifont=DejaVu\ Sans\ Mono\ 12
 
 "行间距，如果默认值太小，代码会非常纠结
 set linespace=4
