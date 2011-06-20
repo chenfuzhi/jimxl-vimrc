@@ -7,6 +7,21 @@ else
   colorscheme slate
 endif
 
+
+" 实现窗口最大化
+
+if has('win32')
+    au GUIEnter * simalt ~x
+else
+    au GUIEnter * call MaximizeWindow()
+endif
+ 
+function! MaximizeWindow()
+    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+endfunction
+
+
+
 " 自动缩进
 set autoindent
 " set cindent
