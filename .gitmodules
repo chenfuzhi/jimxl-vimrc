@@ -13,3 +13,6 @@
 [submodule "The-NERD-tree"]
 	path = The-NERD-tree
 	url = https://github.com/vim-scripts/The-NERD-tree.git
+[submodule "vim-coffee-script"]
+	path = vim-coffee-script
+	url = https://github.com/kchmck/vim-coffee-script.git
