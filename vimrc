@@ -142,3 +142,6 @@ imap <A-1> <Esc>:bp<CR>
 nmap <A-2> :bn<CR>
 imap <A-2> <Esc>:bn<CR>
 " nmap <C-s> :FindFileSplit<CR>
+
+# 支持coffeescript
+call pathogen#runtime_append_all_bundles()
