@@ -1,6 +1,16 @@
+require 'fileutils'
+
 desc 'install vim plus and vimrc file'
 task :install do
-    system('cp -r vim ~/.vim')
-    system('cp vimrc ~/.vimrc')
+    Dir['*'].each do |file|
+        next if File.file?(file)
+        Dir["#{file}/*"].each do |f|
+            if File.directory?(f) 
+                puts f
+                FileUtils.cp_r f, File.join(Dir.home(), '.vim')
+            end
+        end
+    end
+    FileUtils.cp 'vimrc', File.join(Dir.home(), '.vimrc')
 end
 
