@@ -2,3 +2,15 @@
 
 需要 sudo apt-get install wmctrl 来支持窗口最大化功能
 
+rake install 安装插件到用户目录下
+
+
+F5 FindFile缓存
+
+F8 打开目录树
+
+ctrl + e 到行尾
+
+ctrl + a 到行首
+
+:FF 快速打开文件
