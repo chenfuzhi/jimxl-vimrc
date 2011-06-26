@@ -16,3 +16,6 @@
 [submodule "vim-coffee-script"]
 	path = vim-coffee-script
 	url = https://github.com/kchmck/vim-coffee-script.git
+[submodule "vim-session"]
+	path = vim-session
+	url = https://github.com/xolox/vim-session.git
