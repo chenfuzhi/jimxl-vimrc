@@ -1,8 +1,9 @@
 我的vim配置文件
 
 需要 sudo apt-get install wmctrl 来支持窗口最大化功能
+需要 sudo apt-get install ack-grep 以至此ack插件的功能
 
-rake -T 察看所有的任务
+rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下
 
