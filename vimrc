@@ -22,6 +22,7 @@ Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
+Bundle 'kchmck/vim-coffee-script'
 
 filetype plugin indent on
 

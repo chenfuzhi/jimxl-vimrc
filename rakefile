@@ -42,6 +42,12 @@ task :update do
     system("vim +BundleInstall! +qall")
 end
 
+desc '安装新添加的插件'
+task :install_new_plugin do
+    install_vimrc
+    system("vim +BundleInstall +qall")
+end
+
 desc '更新vimrc文件'
 task :update_vimrc do
     install_vimrc
