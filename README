@@ -2,6 +2,8 @@
 
 需要 sudo apt-get install wmctrl 来支持窗口最大化功能
 
+rake -T 察看所有的任务
+
 rake install 安装插件到用户目录下
 
 
@@ -13,4 +15,3 @@ ctrl + e 到行尾
 
 ctrl + a 到行首
 
-:FF 快速打开文件

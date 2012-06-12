@@ -131,6 +131,13 @@ imap <C-A> <Home>
 map <C-E> <End>
 imap <C-E> <End>
 
+""""""""""""""""""""""""""""""
+" Powerline 配置
+""""""""""""""""""""""""""""""
+set nocompatible   " Disable vi-compatibility
+set laststatus=2   " Always show the statusline
+set encoding=utf-8 " Necessary to show unicode glyphs
+
 " 去掉菜单栏和工具栏
 set guioptions-=m
 set guioptions-=T
