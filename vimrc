@@ -23,6 +23,8 @@ Bundle 'Shougo/vimshell'
 Bundle 'Shougo/neocomplcache'
 Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'kchmck/vim-coffee-script'
+Bundle 'cakebaker/scss-syntax.vim'
+Bundle 'othree/html5.vim'
 
 filetype plugin indent on
 
