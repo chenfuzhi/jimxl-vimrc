@@ -1,8 +1,6 @@
 "设置语法高亮的配色，在GUI界面里使用我自定义的yytextmate.vim
 if has("gui_running")
   colorscheme railscasts
-  set lines=1000
-  set columns=1000
 else
   colorscheme slate
 endif
