@@ -1,3 +1,27 @@
+set nocompatible               
+filetype off                   
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" 管理vundle插件本身
+Bundle 'gmarik/vundle'
+
+" 我的插件
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'msanders/snipmate.vim'
+Bundle 'mileszs/ack.vim'
+Bundle 'tpope/vim-rails'
+Bundle 'nsf/gocode'
+Bundle 'fholgado/minibufexpl.vim'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'jpo/vim-railscasts-theme'
+
+filetype plugin indent on
+
+
 "设置语法高亮的配色，在GUI界面里使用我自定义的yytextmate.vim
 if has("gui_running")
   colorscheme railscasts

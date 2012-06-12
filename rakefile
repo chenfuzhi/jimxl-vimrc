@@ -1,16 +1,30 @@
+#encoding: utf-8
 require 'fileutils'
 
-desc 'install vim plus and vimrc file'
-task :install do
-    Dir['*'].each do |file|
-        next if File.file?(file)
-        Dir["#{file}/*"].each do |f|
-            if File.directory?(f) 
-                puts f
-                FileUtils.cp_r f, File.join(Dir.home(), '.vim')
-            end
-        end
-    end
-    FileUtils.cp 'vimrc', File.join(Dir.home(), '.vimrc')
+def install_vundle
+    FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
+    FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/')
+    system("vim +BundleInstall +qall")
 end
 
+def install_vimrc
+    FileUtils.cp 'vimrc', File.join(Dir.home, '.vimrc')
+end
+
+desc '安装vim插件以及vim配置文件'
+task :install do
+    install_vimrc
+    install_vundle
+end
+
+
+desc '清除安装的插件和配置文件'
+task :uninstall do
+    FileUtils.rm_rf File.join(Dir.home(), '.vimrc'), File.join(Dir.home, '.vim')
+end
+
+desc '更新已经安装的插件,安装新添加的插件'
+task :update do
+    install_vimrc
+    system("vim +BundleInstall! +qall")
+end
