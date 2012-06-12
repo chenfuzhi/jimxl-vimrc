@@ -28,3 +28,12 @@ task :update do
     install_vimrc
     system("vim +BundleInstall! +qall")
 end
+
+desc '安装中文帮助'
+task :install_cn_doc do
+    system("wget http://prdownloads.sourceforge.net/vimcdoc/vimcdoc-1.8.0.tar.gz") unless File.file?('vimcdoc-1.8.0.tar.gz')
+    system("tar zxvf vimcdoc-1.8.0.tar.gz")
+    Dir.chdir('vimcdoc-1.8.0') do
+        system('./vimcdoc.sh -i')
+    end
+end
