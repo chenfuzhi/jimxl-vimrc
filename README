@@ -2,7 +2,7 @@
 
 需要 sudo apt-get install wmctrl 来支持窗口最大化功能
 需要 sudo apt-get install ack-grep 以至此ack插件的功能
-
+安装我完成之后 需要到~/.vim/bundle/vimproc目录下执行 make -f make_unix.mak 以支持vimshell
 rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下

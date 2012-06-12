@@ -11,22 +11,40 @@ def install_vimrc
     FileUtils.cp 'vimrc', File.join(Dir.home, '.vimrc')
 end
 
+def install_needed_software
+    system("sudo apt-get install wmctrl")
+    system("sudo apt-get install ack-grep")
+end
+
+def compile_vimprocess
+    Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc')) do
+        system("make -f make_unix.mak")
+    end
+end
+
 desc '安装vim插件以及vim配置文件'
 task :install do
+    install_needed_software
     install_vimrc
     install_vundle
+    compile_vimprocess
 end
 
 
 desc '清除安装的插件和配置文件'
 task :uninstall do
-    FileUtils.rm_rf File.join(Dir.home(), '.vimrc'), File.join(Dir.home, '.vim')
+    FileUtils.rm_rf File.join(Dir.home, '.vimrc'), File.join(Dir.home, '.vim')
 end
 
 desc '更新已经安装的插件,安装新添加的插件'
 task :update do
     install_vimrc
     system("vim +BundleInstall! +qall")
+end
+
+desc '更新vimrc文件'
+task :update_vimrc do
+    install_vimrc
 end
 
 desc '安装中文帮助'
