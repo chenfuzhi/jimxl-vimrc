@@ -117,19 +117,9 @@ nmap <silent> <leader>fe :Sexplore!<cr>
 " NERDTree插件的快捷键
 """"""""""""""""""""""""""""""
 nmap <silent> <leader>nt :NERDTree<cr>
-
-map <C-c> "+y
-imap <C-v> <Esc>"+gp
-map <C-v> "+gp
-map <C-S> :w<CR>
-imap <C-S> <Esc>:w<CR>a
 map <F8> <Esc>:NERDTree<CR>
 imap <F8> <Esc>:NERDTree<CR>
-
-map <C-A> <Home>
-imap <C-A> <Home>
-map <C-E> <End>
-imap <C-E> <End>
+autocmd vimenter * NERDTree
 
 """"""""""""""""""""""""""""""
 " Powerline 配置
@@ -165,15 +155,19 @@ let g:miniBufExplModSelTarget = 1
 
 filetype plugin on
 
+map <C-c> "+y
+imap <C-v> <Esc>"+gp
+map <C-v> "+gp
+map <C-S> :w<CR>
+imap <C-S> <Esc>:w<CR>a
 
-"nmap <A-f> :FindFile<CR> 
-"imap <A-f> <Esc>:FindFile<CR> 
-nmap <F5> :FC .<CR> 
-imap <F5> :FC .<CR> 
+map <C-A> <Home>
+imap <C-A> <Home>
+map <C-E> <End>
+imap <C-E> <End>
 
 nmap <A-1> :bp<CR>
 imap <A-1> <Esc>:bp<CR>
 nmap <A-2> :bn<CR>
 imap <A-2> <Esc>:bn<CR>
-" nmap <C-s> :FindFileSplit<CR>
 
