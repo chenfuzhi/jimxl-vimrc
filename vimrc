@@ -27,6 +27,7 @@ Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'xolox/vim-session'
+Bundle 'vim-ruby/vim-ruby'
 
 filetype plugin indent on
 
