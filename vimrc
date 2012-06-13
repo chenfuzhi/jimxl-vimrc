@@ -25,6 +25,8 @@ Bundle 'Shougo/neocomplcache-snippets-complete'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
+Bundle 'tpope/vim-surround'
+Bundle 'xolox/vim-session'
 
 filetype plugin indent on
 
