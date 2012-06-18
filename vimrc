@@ -28,6 +28,7 @@ Bundle 'othree/html5.vim'
 Bundle 'tpope/vim-surround'
 Bundle 'xolox/vim-session'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'a.vim'
 
 filetype plugin indent on
 
@@ -236,6 +237,10 @@ set cursorline
 set expandtab
 set softtabstop=4
 set shiftwidth=4
+set showmatch
+set incsearch
+
+set winaltkeys=no
 
 let g:miniBufExplMapWindowNavVim = 1 
 let g:miniBufExplMapWindowNavArrows = 1 
@@ -245,7 +250,7 @@ let g:miniBufExplModSelTarget = 1
 filetype plugin on
 
 map <C-c> "+y
-imap <C-v> <Esc>"+gp
+imap <C-v> <Esc>"+gpa
 map <C-v> "+gp
 map <C-S> :w<CR>
 imap <C-S> <Esc>:w<CR>a
@@ -260,3 +265,6 @@ imap <A-1> <Esc>:bp<CR>
 nmap <A-2> :bn<CR>
 imap <A-2> <Esc>:bn<CR>
 
+map <F4> <Esc>:A<CR><Esc>
+vmap <S-Tab> <Lt>gv
+vmap <Tab> >gv
