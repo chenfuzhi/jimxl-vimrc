@@ -26,9 +26,10 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'cakebaker/scss-syntax.vim'
 Bundle 'othree/html5.vim'
 Bundle 'tpope/vim-surround'
-Bundle 'xolox/vim-session'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'a.vim'
+Bundle 'taglist.vim'
+Bundle 'winmanager'
 
 filetype plugin indent on
 
@@ -107,7 +108,16 @@ set nobackup
 "设置自定义的<leader>快捷键
 let mapleader=","
 let g:mapleader=","
- 
+
+""""""""""""""""""""""""""""""
+" taglist 插件的设置
+""""""""""""""""""""""""""""""
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+"let Tlist_File_Fold_Auto_Close=1
+let Tlist_Show_Menu=0
+"let Tlist_Auto_Open=1
+
 """"""""""""""""""""""""""""""
 " bufExplorer插件的设置
 """"""""""""""""""""""""""""""
@@ -117,7 +127,30 @@ let g:mapleader=","
 "let g:bufExplorerSplitVertSize = 30 
 "let g:bufExplorerUseCurrentWindow=1 
 "autocmd BufWinEnter \[Buf\ List\] setl nonumber
- 
+
+""""""""""""""""""""""""""""""
+" winManager 插件的设置
+""""""""""""""""""""""""""""""
+
+let g:NERDTree_title='[NERD Tree]'
+function! NERDTree_Start()
+    exec 'NERDTree'
+endfunction
+
+function! NERDTree_IsValid()
+    return 1
+endfunction
+
+let g:winManagerWindowLayout = "NERDTree|TagList"
+let g:winManagerWidth = 30
+let g:defaultExplorer = 0
+nmap <C-W><C-F> :FirstExplorerWindow<cr>
+nmap <C-W><C-B> :BottomExplorerWindow<cr>
+nmap <silent> <leader>wm :WMToggle<cr>
+nmap <silent><F7> :WMToggle<cr>:q<cr>
+nmap <C-F7> :WMToggle<cr>
+"autocmd vimenter * WMToggle
+
 """"""""""""""""""""""""""""""
 " netrw插件的快捷键
 """"""""""""""""""""""""""""""
@@ -130,7 +163,7 @@ nmap <silent> <leader>fe :Sexplore!<cr>
 nmap <silent> <leader>nt :NERDTree<cr>
 map <F8> <Esc>:NERDTree<CR>
 imap <F8> <Esc>:NERDTree<CR>
-autocmd vimenter * NERDTree
+"autocmd vimenter * NERDTree
 
 """"""""""""""""""""""""""""""
 " Powerline 配置
@@ -268,3 +301,4 @@ imap <A-2> <Esc>:bn<CR>
 map <F4> <Esc>:A<CR><Esc>
 vmap <S-Tab> <Lt>gv
 vmap <Tab> >gv
+nmap <F9> <Esc>:!ctags -R *<CR>
