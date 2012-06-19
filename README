@@ -1,18 +1,18 @@
 我的vim配置文件
 
-需要 sudo apt-get install wmctrl 来支持窗口最大化功能
-需要 sudo apt-get install ack-grep 以至此ack插件的功能
-安装我完成之后 需要到~/.vim/bundle/vimproc目录下执行 make -f make_unix.mak 以支持vimshell
 rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下
 
-
-F5 FindFile缓存
-
-F8 打开目录树
+F7 打开文件目录和taglist功能
+F9 执行ctag命令
+F4 切换头文件和cpp文件
 
 ctrl + e 到行尾
 
 ctrl + a 到行首
+
+Tab 和 Shift Tab作为代码的缩进
+
+,cs ,cu命令切换注释
 
