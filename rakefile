@@ -11,6 +11,22 @@ def install_vimrc
     FileUtils.cp 'vimrc', File.join(Dir.home, '.vimrc')
 end
 
+def mkvimdir path
+    real_path = File.join(Dir.home, ".vim/#{path}")
+    FileUtils.mkdir_p real_path unless File.directory?(real_path)
+end
+
+def install_go_syntax
+    ['autoload/go/', '/ftplugin/go/', 'ftdetect/', 'syntax/', 'indent/', 'plugin/', 'syntax/'].each{|path| mkvimdir(path) }
+    FileUtils.cp 'golang/autoload/go/complete.vim', File.join(Dir.home, '.vim/autoload/go/')
+    FileUtils.cp Dir['golang/ftplugin/go/*'], File.join(Dir.home, '.vim/ftplugin/go/')
+    FileUtils.cp 'golang/ftdetect/gofiletype.vim', File.join(Dir.home, '.vim/ftdetect/')
+    FileUtils.cp 'golang/syntax/go.vim', File.join(Dir.home, '.vim/syntax/')
+    FileUtils.cp 'golang/indent/go.vim', File.join(Dir.home, '.vim/indent/')
+    FileUtils.cp 'golang/plugin/godoc.vim', File.join(Dir.home, '.vim/plugin/godoc.vim')
+    FileUtils.cp 'golang/syntax/godoc.vim', File.join(Dir.home, '.vim/syntax/godoc.vim')
+end
+
 def install_needed_software
     system("sudo apt-get install wmctrl")
     system("sudo apt-get install ack-grep")
@@ -24,6 +40,7 @@ end
 
 desc '安装vim插件以及vim配置文件'
 task :install do
+    install_go_syntax
     install_needed_software
     install_vimrc
     install_vundle
@@ -39,6 +56,7 @@ end
 desc '更新已经安装的插件,安装新添加的插件'
 task :update do
     install_vimrc
+    install_go_syntax
     system("vim +BundleInstall! +qall")
 end
 
