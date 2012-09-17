@@ -44,11 +44,15 @@ endif
 
 " 实现窗口最大化
 
-if has('win32')
-    au GUIEnter * simalt ~x
-else
-    au GUIEnter * call MaximizeWindow()
-endif
+if has("gui")
+    if has('win32')
+        au GUIEnter * simalt ~x
+    elseif has("gui_macvim")
+        set lines=999 columns=999
+    elseif has("gui")
+        au GUIEnter * call MaximizeWindow()
+    endif
+end
  
 function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
@@ -64,7 +68,11 @@ set autoindent
 set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
 
 "GUI界面里的字体，默认有抗锯齿
-set guifont=DejaVu\ Sans\ Mono\ 12
+if has("mac")
+    set guifont=Monaco:h14
+else
+    set guifont=DejaVu\ Sans\ Mono\ 12
+endif
 
 "行间距，如果默认值太小，代码会非常纠结
 set linespace=4
@@ -132,7 +140,7 @@ let Tlist_Show_Menu=0
 " winManager 插件的设置
 """"""""""""""""""""""""""""""
 
-let g:NERDTree_title='[NERD Tree]'
+let g:NERDTree_title='[NERDTree]'
 function! NERDTree_Start()
     exec 'NERDTree'
 endfunction
@@ -149,6 +157,21 @@ nmap <C-W><C-B> :BottomExplorerWindow<cr>
 nmap <silent> <leader>wm :WMToggle<cr>
 nmap <silent><F7> :WMToggle<cr>:q<cr>
 nmap <C-F7> :WMToggle<cr>
+
+" 不同时显示多个文件的 tag ，只显示当前文件的
+let Tlist_Show_One_File=1
+ 
+" 如果 taglist 窗口是最后一个窗口，则退出 vim
+let Tlist_Exit_OnlyWindow=1
+ 
+"让当前不被编辑的文件的方法列表自动折叠起来 
+let Tlist_File_Fold_Auto_Close=1
+ 
+"不显示taglist菜单
+let Tlist_Show_Menu=0
+
+let Tlist_WinHeight = 20
+
 "autocmd vimenter * WMToggle
 
 """"""""""""""""""""""""""""""
@@ -279,6 +302,9 @@ let g:miniBufExplMapWindowNavVim = 1
 let g:miniBufExplMapWindowNavArrows = 1 
 let g:miniBufExplMapCTabSwitchBufs = 1 
 let g:miniBufExplModSelTarget = 1
+
+" 避免窗口大小改变
+let g:miniBufExplorerMoreThanOne = 0
 
 filetype plugin on
 
