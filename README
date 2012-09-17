@@ -1,5 +1,9 @@
 我的vim配置文件
 
+git submodule init
+git submodule update
+
+
 rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下
