@@ -1,6 +1,21 @@
 #encoding: utf-8
 require 'fileutils'
 
+def os
+    if RUBY_PLATFORM =~ /win32/
+        return "windows"
+    elsif RUBY_PLATFORM =~ /linux/
+        return "linux"
+    elsif RUBY_PLATFORM =~ /darwin/
+        return "mac"
+    elsif RUBY_PLATFORM =~ /freebsd/
+        return "freebsd"
+    else
+        return ""
+    end
+end
+
+
 def install_vundle
     FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
     FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/')
@@ -28,8 +43,13 @@ def install_go_syntax
 end
 
 def install_needed_software
-    system("sudo apt-get install wmctrl")
-    system("sudo apt-get install ack-grep")
+    if os == "linux"
+        system("sudo apt-get install wmctrl")
+        system("sudo apt-get install ack-grep")
+    elsif os == 'mac'
+        system('brew install ack')
+        system('brew install wmctrl')
+    end
 end
 
 def compile_vimprocess
