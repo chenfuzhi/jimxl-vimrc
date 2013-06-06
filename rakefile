@@ -49,6 +49,7 @@ def install_needed_software
     elsif os == 'mac'
         system('brew install ack')
         system('brew install wmctrl')
+        system('brew install ctags')
     end
 end
 

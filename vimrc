@@ -126,6 +126,10 @@ let Tlist_Exit_OnlyWindow=1
 let Tlist_Show_Menu=0
 "let Tlist_Auto_Open=1
 
+if has('mac')
+  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+endif
+
 """"""""""""""""""""""""""""""
 " bufExplorer插件的设置
 """"""""""""""""""""""""""""""
