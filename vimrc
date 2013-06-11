@@ -303,13 +303,13 @@ set incsearch
 
 set winaltkeys=no
 
-let g:miniBufExplMapWindowNavVim = 1 
-let g:miniBufExplMapWindowNavArrows = 1 
-let g:miniBufExplMapCTabSwitchBufs = 1 
-let g:miniBufExplModSelTarget = 1
+" let g:miniBufExplMapWindowNavVim = 1 
+" let g:miniBufExplMapWindowNavArrows = 1 
+" let g:miniBufExplMapCTabSwitchBufs = 1 
+" let g:miniBufExplModSelTarget = 1
 
 " 避免窗口大小改变
-let g:miniBufExplorerMoreThanOne = 0
+" let g:miniBufExplorerMoreThanOne = 0
 
 filetype plugin on
 
@@ -324,10 +324,10 @@ imap <C-A> <Home>
 map <C-E> <End>
 imap <C-E> <End>
 
-nmap <A-1> :bp<CR>
-imap <A-1> <Esc>:bp<CR>
-nmap <A-2> :bn<CR>
-imap <A-2> <Esc>:bn<CR>
+" nmap <A-1> :bp<CR>
+" imap <A-1> <Esc>:bp<CR>
+" nmap <A-2> :bn<CR>
+" imap <A-2> <Esc>:bn<CR>
 
 map <F4> <Esc>:A<CR><Esc>
 vmap <S-Tab> <Lt>gv
