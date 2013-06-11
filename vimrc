@@ -14,7 +14,6 @@ Bundle 'msanders/snipmate.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-rails'
 Bundle 'nsf/gocode'
-Bundle 'fholgado/minibufexpl.vim'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'jpo/vim-railscasts-theme'
@@ -29,7 +28,6 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'a.vim'
 Bundle 'taglist.vim'
-Bundle 'winmanager'
 
 filetype plugin indent on
 
@@ -64,8 +62,15 @@ endfunction
 set autoindent
 " set cindent
 
-"查找编码的规则（vim7默认都用utf-8，打开包含gbk字符的文件会出现乱码）
-set fileencodings=utf-8,ucs-bom,gb18030,gbk,gb2312,cp936
+"" 编码/Encoding
+set encoding=utf-8              " 编码
+set termencoding=utf-8          " 终端编码
+set fileencodings=utf-8,chinese,usc-bom,euc-jp,gb18030,gbk,big5 "文件编码
+
+"" 语言/Language
+language messages zh_CN.utf-8   " 输出信息语言
+" 中文帮助：vimcdoc, see aur/vimcdoc-svn
+set helplang=cn,en              " 帮助语言
 
 "GUI界面里的字体，默认有抗锯齿
 if has("mac")
@@ -120,48 +125,9 @@ let g:mapleader=","
 """"""""""""""""""""""""""""""
 " taglist 插件的设置
 """"""""""""""""""""""""""""""
-let Tlist_Show_One_File=1
-let Tlist_Exit_OnlyWindow=1
-"let Tlist_File_Fold_Auto_Close=1
-let Tlist_Show_Menu=0
-"let Tlist_Auto_Open=1
-
 if has('mac')
   let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 endif
-
-""""""""""""""""""""""""""""""
-" bufExplorer插件的设置
-""""""""""""""""""""""""""""""
-"let g:bufExplorerSortBy='mru'
-"let g:bufExplorerSplitRight=0     
-"let g:bufExplorerSplitVertical=1
-"let g:bufExplorerSplitVertSize = 30 
-"let g:bufExplorerUseCurrentWindow=1 
-"autocmd BufWinEnter \[Buf\ List\] setl nonumber
-
-""""""""""""""""""""""""""""""
-" winManager 插件的设置
-""""""""""""""""""""""""""""""
-
-let g:NERDTree_title='[NERDTree]'
-function! NERDTree_Start()
-    exec 'NERDTree'
-endfunction
-
-function! NERDTree_IsValid()
-    return 1
-endfunction
-
-"let g:winManagerWindowLayout = "NERDTree|TagList"
-let g:winManagerWindowLayout = "NERDTree"
-let g:winManagerWidth = 30
-let g:defaultExplorer = 0
-nmap <C-W><C-F> :FirstExplorerWindow<cr>
-nmap <C-W><C-B> :BottomExplorerWindow<cr>
-nmap <silent> <leader>wm :WMToggle<cr>
-nmap <silent><F7> :WMToggle<cr>:q<cr>
-nmap <C-F7> :WMToggle<cr>
 
 " 不同时显示多个文件的 tag ，只显示当前文件的
 let Tlist_Show_One_File=1
@@ -175,7 +141,12 @@ let Tlist_File_Fold_Auto_Close=1
 "不显示taglist菜单
 let Tlist_Show_Menu=0
 
+let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口 
+
 let Tlist_WinHeight = 20
+noremap  <F3> :TlistToggle<cr>
+inoremap <F3> <esc>:TlistToggle<cr>
+
 
 "autocmd vimenter * WMToggle
 
@@ -186,12 +157,18 @@ let g:netrw_winsize = 30
 nmap <silent> <leader>fe :Sexplore!<cr>
  
 """"""""""""""""""""""""""""""
-" NERDTree插件的快捷键
+" NERDTree插件配置
 """"""""""""""""""""""""""""""
-nmap <silent> <leader>nt :NERDTree<cr>
-map <F8> <Esc>:NERDTree<CR>
-imap <F8> <Esc>:NERDTree<CR>
-"autocmd vimenter * NERDTree
+noremap  <F2> :NERDTreeToggle<cr>
+inoremap <F2> <esc>:NERDTreeToggle<cr>
+
+au Filetype nerdtree setlocal nolist
+
+let NERDTreeHighlightCursorline=1
+let NERDTreeIgnore=['.vim$', '\~$', '.*\.pyc$', 'pip-log\.txt$', 'whoosh_index', 'xapian_index', '.*.pid', 'monitor.py', '.*-fixtures-.*.json', '.*\.o$', 'db.db']
+
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 
 """"""""""""""""""""""""""""""
 " Powerline 配置
@@ -302,14 +279,6 @@ set showmatch
 set incsearch
 
 set winaltkeys=no
-
-" let g:miniBufExplMapWindowNavVim = 1 
-" let g:miniBufExplMapWindowNavArrows = 1 
-" let g:miniBufExplMapCTabSwitchBufs = 1 
-" let g:miniBufExplModSelTarget = 1
-
-" 避免窗口大小改变
-" let g:miniBufExplorerMoreThanOne = 0
 
 filetype plugin on
 
