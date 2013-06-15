@@ -16,7 +16,8 @@ Bundle 'tpope/vim-rails'
 Bundle 'nsf/gocode'
 Bundle 'scrooloose/nerdcommenter'
 Bundle 'Lokaltog/vim-powerline'
-Bundle 'jpo/vim-railscasts-theme'
+" Bundle 'jpo/vim-railscasts-theme'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'Shougo/vimproc'
 Bundle 'Shougo/vimshell'
 Bundle 'Shougo/neocomplcache'
@@ -32,11 +33,12 @@ Bundle 'taglist.vim'
 filetype plugin indent on
 
 
-"设置语法高亮的配色，在GUI界面里使用我自定义的yytextmate.vim
+"设置语法高亮的配色
 if has("gui_running")
-  colorscheme railscasts
+    set background=dark
+    colorscheme solarized
 else
-  colorscheme slate
+    colorscheme slate
 endif
 
 
@@ -51,7 +53,7 @@ if has("gui")
         au GUIEnter * call MaximizeWindow()
     endif
 end
- 
+
 function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
@@ -81,7 +83,7 @@ endif
 
 "行间距，如果默认值太小，代码会非常纠结
 set linespace=4
-                                                                       
+
 "用<>调整缩进时的长度
 set shiftwidth=4
 
@@ -94,7 +96,7 @@ set number
 "行号栏的宽度
 set numberwidth=4
 
- "禁止自动换行
+"禁止自动换行
 set nowrap
 
 "在输入命令时列出匹配项目
@@ -105,8 +107,8 @@ set ruler
 
 "分割窗口时保持相等的宽/高
 set equalalways
- 
- "匹配括号的规则，增加针对html的<>
+
+"匹配括号的规则，增加针对html的<>
 set matchpairs=(:),{:},[:],<:>
 
 "让退格，空格，上下箭头遇到行首行尾时自动移到下一行（包括insert模式）
@@ -117,7 +119,7 @@ set nobackup
 
 "保存关闭文件之前保留一个备份
 "set writebackup
- 
+
 "设置自定义的<leader>快捷键
 let mapleader=","
 let g:mapleader=","
@@ -126,18 +128,18 @@ let g:mapleader=","
 " taglist 插件的设置
 """"""""""""""""""""""""""""""
 if has('mac')
-  let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
+    let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 endif
 
 " 不同时显示多个文件的 tag ，只显示当前文件的
 let Tlist_Show_One_File=1
- 
+
 " 如果 taglist 窗口是最后一个窗口，则退出 vim
 let Tlist_Exit_OnlyWindow=1
- 
+
 "让当前不被编辑的文件的方法列表自动折叠起来 
 let Tlist_File_Fold_Auto_Close=1
- 
+
 "不显示taglist菜单
 let Tlist_Show_Menu=0
 
@@ -155,7 +157,7 @@ inoremap <F3> <esc>:TlistToggle<cr>
 """"""""""""""""""""""""""""""
 let g:netrw_winsize = 30
 nmap <silent> <leader>fe :Sexplore!<cr>
- 
+
 """"""""""""""""""""""""""""""
 " NERDTree插件配置
 """"""""""""""""""""""""""""""
@@ -201,14 +203,14 @@ let g:neocomplcache_lock_buffer_name_pattern = '\*ku\*'
 
 " Define dictionary.
 let g:neocomplcache_dictionary_filetype_lists = {
-    \ 'default' : '',
-    \ 'vimshell' : $HOME.'/.vimshell_hist',
-    \ 'scheme' : $HOME.'/.gosh_completions'
-    \ }
+            \ 'default' : '',
+            \ 'vimshell' : $HOME.'/.vimshell_hist',
+            \ 'scheme' : $HOME.'/.gosh_completions'
+            \ }
 
 " Define keyword.
 if !exists('g:neocomplcache_keyword_patterns')
-  let g:neocomplcache_keyword_patterns = {}
+    let g:neocomplcache_keyword_patterns = {}
 endif
 let g:neocomplcache_keyword_patterns['default'] = '\h\w*'
 
@@ -251,7 +253,7 @@ autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
 
 " Enable heavy omni completion.
 if !exists('g:neocomplcache_omni_patterns')
-  let g:neocomplcache_omni_patterns = {}
+    let g:neocomplcache_omni_patterns = {}
 endif
 let g:neocomplcache_omni_patterns.ruby = '[^. *\t]\.\w*\|\h\w*::'
 "autocmd FileType ruby setlocal omnifunc=rubycomplete#Complete
