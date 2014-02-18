@@ -305,3 +305,7 @@ map <F4> <Esc>:A<CR><Esc>
 vmap <S-Tab> <Lt>gv
 vmap <Tab> >gv
 nmap <F9> <Esc>:!ctags -R *<CR>
+
+" 默认关闭markdown插件的folding
+let g:vim_markdown_folding_disabled=1
+
