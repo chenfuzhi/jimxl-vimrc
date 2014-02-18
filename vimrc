@@ -29,6 +29,7 @@ Bundle 'tpope/vim-surround'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'a.vim'
 Bundle 'taglist.vim'
+Bundle 'plasticboy/vim-markdown'
 
 filetype plugin indent on
 
