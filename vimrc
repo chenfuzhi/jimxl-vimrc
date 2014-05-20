@@ -14,7 +14,10 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'nsf/gocode'
-Plugin 'scrooloose/nerdcommenter'
+" Plugin 'scrooloose/nerdcommenter'
+
+Plugin 'tomtom/tcomment_vim'
+
 Plugin 'Lokaltog/vim-powerline'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'Shougo/vimproc'
