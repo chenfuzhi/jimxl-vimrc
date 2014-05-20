@@ -1,12 +1,21 @@
+h1. 我的vim配置文件
+
 我的vim配置文件
+
+h2. 初始化代码
 
 git submodule init
 git submodule update
 
 
+h2. 安装
+
 rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下
+
+
+h3. 一些功能
 
 F2 打开文件目录
 F3 taglist功能
@@ -19,5 +28,5 @@ ctrl + a 到行首
 
 Tab 和 Shift Tab作为代码的缩进
 
-,cs ,cu命令切换注释
+gc 来切换注释
 
