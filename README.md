@@ -1,21 +1,21 @@
-h1. 我的vim配置文件
+# 我的vim配置文件
 
 我的vim配置文件
 
-h2. 初始化代码
+## 初始化代码
 
 git submodule init
 git submodule update
 
 
-h2. 安装
+## 安装
 
 rake -T 查看所有的任务
 
 rake install 安装插件到用户目录下
 
 
-h3. 一些功能
+## 一些功能热键
 
 F2 打开文件目录
 F3 taglist功能
