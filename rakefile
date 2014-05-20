@@ -19,7 +19,11 @@ end
 def install_vundle
     FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
     FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/')
-    system("vim +BundleInstall +qall")
+    if os == "linux"
+        system("vim +PluginInstall +qall")
+    elsif os == 'mac'
+        system("mvim +PluginInstall +qall")
+    end
 end
 
 def install_vimrc
@@ -55,7 +59,22 @@ end
 
 def compile_vimprocess
     Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc')) do
-        system("make -f make_unix.mak")
+    	if os == "linux"
+    	    system("make -f make_unix.mak")
+        elsif os == 'mac'
+            system("make -f make_mac.mak")
+        end
+    end
+end
+
+
+def compile_youcompleteme
+    Dir.chdir(File.join(Dir.home, '.vim/bundle/YouCompleteMe')) do
+    	if os == "linux"
+    	    system("./install.sh")
+        elsif os == 'mac'
+            system("./install.sh --clang-completer")
+        end
     end
 end
 
@@ -66,6 +85,7 @@ task :install do
     install_vimrc
     install_vundle
     compile_vimprocess
+    compile_youcompleteme
 end
 
 
