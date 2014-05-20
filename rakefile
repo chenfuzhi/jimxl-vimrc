@@ -98,13 +98,21 @@ desc '更新已经安装的插件,安装新添加的插件'
 task :update do
     install_vimrc
     install_go_syntax
-    system("vim +BundleInstall! +qall")
+    if os == "linux"
+        system("vim +PluginInstall +qall")
+    elsif os == 'mac'
+        system("mvim +PluginInstall +qall")
+    end
 end
 
 desc '安装新添加的插件'
 task :install_new_plugin do
     install_vimrc
-    system("vim +BundleInstall +qall")
+    if os == "linux"
+        system("vim +PluginInstall +qall")
+    elsif os == 'mac'
+        system("mvim +PluginInstall +qall")
+    end
 end
 
 desc '更新vimrc文件'
