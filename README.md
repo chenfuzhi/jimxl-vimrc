@@ -4,9 +4,12 @@
 
 ## 初始化代码
 
+``` shell
 git submodule init
+
 git submodule update
 
+```
 
 ## 安装
 
