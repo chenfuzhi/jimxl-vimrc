@@ -49,6 +49,8 @@ end
 def install_needed_software
     if os == "linux"
         system("sudo apt-get install wmctrl")
+        system("sudo apt-get install cmake")
+        system("sudo apt-get install python-dev")
         system("sudo apt-get install ack-grep")
     elsif os == 'mac'
         system('brew install ack')

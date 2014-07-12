@@ -14,6 +14,7 @@ Plugin 'msanders/snipmate.vim'
 Plugin 'mileszs/ack.vim'
 Plugin 'tpope/vim-rails'
 Plugin 'nsf/gocode'
+Bundle 'slim-template/vim-slim.git'
 " Plugin 'scrooloose/nerdcommenter'
 
 Plugin 'tomtom/tcomment_vim'
