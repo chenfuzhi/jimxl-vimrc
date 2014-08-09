@@ -195,11 +195,11 @@ set winaltkeys=no
 
 filetype plugin on
 
-map <C-c> "+y
-imap <C-v> <Esc>"+gpa
-map <C-v> "+gp
-map <C-S> :w<CR>
-imap <C-S> <Esc>:w<CR>a
+" map <C-c> "+y
+" imap <C-v> <Esc>"+gpa
+" map <C-v> "+gp
+" map <C-S> :w<CR>
+" imap <C-S> <Esc>:w<CR>a
 
 map <C-A> <Home>
 imap <C-A> <Home>
@@ -214,8 +214,18 @@ imap <C-E> <End>
 map <F4> <Esc>:A<CR><Esc>
 vmap <S-Tab> <Lt>gv
 vmap <Tab> >gv
-nmap <F9> <Esc>:!ctags -R *<CR>
 
 " 默认关闭markdown插件的folding
 let g:vim_markdown_folding_disabled=1
+
+
+" CTRL-Tab is next tab
+noremap <C-l> :<C-U>tabnext<CR>
+inoremap <C-l> <C-\><C-N>:tabnext<CR>
+cnoremap <C-l> <C-C>:tabnext<CR>
+
+" CTRL-SHIFT-Tab is previous tab
+noremap <C-H> :<C-U>tabprevious<CR>
+inoremap <C-H> <C-\><C-N>:tabprevious<CR>
+cnoremap <C-H> <C-C>:tabprevious<CR>
 

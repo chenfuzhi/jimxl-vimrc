@@ -31,3 +31,6 @@ Tab 和 Shift Tab作为代码的缩进
 
 gc 来切换注释
 
+Ctrl + h 切换上一个tab
+Ctrl + l 切换下一个tab
+
