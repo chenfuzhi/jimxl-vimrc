@@ -18,7 +18,7 @@ end
 
 def install_vundle
     FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
-    FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/')
+    FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/Vundle.vim')
     if os == "linux"
         system("vim +PluginInstall +qall")
     elsif os == 'mac'
@@ -52,42 +52,44 @@ def install_needed_software
         system("sudo apt-get install cmake")
         system("sudo apt-get install python-dev")
         system("sudo apt-get install ack-grep")
+        system('apt-get install silversearcher-ag')
     elsif os == 'mac'
         system('brew install ack')
         system('brew install wmctrl')
         system('brew install ctags')
+        system('brew install the_silver_searcher')
     end
 end
 
-def compile_vimprocess
-    Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc')) do
-    	if os == "linux"
-    	    system("make -f make_unix.mak")
-        elsif os == 'mac'
-            system("make -f make_mac.mak")
-        end
-    end
-end
-
-
-def compile_youcompleteme
-    Dir.chdir(File.join(Dir.home, '.vim/bundle/YouCompleteMe')) do
-    	if os == "linux"
-    	    system("./install.sh")
-        elsif os == 'mac'
-            system("./install.sh --clang-completer")
-        end
-    end
-end
+# def compile_vimprocess
+#     Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc')) do
+#       if os == "linux"
+#           system("make -f make_unix.mak")
+#         elsif os == 'mac'
+#             system("make -f make_mac.mak")
+#         end
+#     end
+# end
+#
+#
+# def compile_youcompleteme
+#     Dir.chdir(File.join(Dir.home, '.vim/bundle/YouCompleteMe')) do
+#       if os == "linux"
+#           system("./install.sh")
+#         elsif os == 'mac'
+#             system("./install.sh --clang-completer")
+#         end
+#     end
+# end
 
 desc '安装vim插件以及vim配置文件'
 task :install do
-    install_go_syntax
+    # install_go_syntax
     install_needed_software
     install_vimrc
     install_vundle
-    compile_vimprocess
-    compile_youcompleteme
+    # compile_vimprocess
+    # compile_youcompleteme
 end
 
 
@@ -101,9 +103,9 @@ task :update do
     install_vimrc
     install_go_syntax
     if os == "linux"
-        system("vim +PluginInstall +qall")
+        system("vim +PluginUpdate +PluginClean! +qall")
     elsif os == 'mac'
-        system("mvim +PluginInstall +qall")
+        system("mvim +PluginUpdate +PluginClean! +qall")
     end
 end
 

@@ -1,42 +1,57 @@
 set nocompatible               
 filetype off                   
 
-set rtp+=~/.vim/bundle/vundle
+set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " 管理vundle插件本身
 Plugin 'gmarik/vundle'
 
 " 我的插件
+
+" 1. 操作相关
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-Plugin 'msanders/snipmate.vim'
-Plugin 'mileszs/ack.vim'
-Plugin 'tpope/vim-rails'
-Plugin 'nsf/gocode'
-Bundle 'slim-template/vim-slim.git'
-" Plugin 'scrooloose/nerdcommenter'
 
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+
+" Plugin 'mileszs/ack.vim'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-surround'
+Plugin 'szw/vim-ctrlspace'
+Plugin 'a.vim'
 Plugin 'tomtom/tcomment_vim'
+Plugin 'Lokaltog/vim-easymotion'
 
-Plugin 'Lokaltog/vim-powerline'
+
+" 2. ui相关
+Plugin 'itchyny/lightline.vim'
 Plugin 'altercation/vim-colors-solarized'
-Plugin 'Shougo/vimproc'
-Plugin 'Shougo/vimshell'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'Shougo/neosnippet'
+
+" vim 对齐显示
+Plugin 'nathanaelkane/vim-indent-guides'
+
+" 3. 语言相关
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'othree/html5.vim'
-Plugin 'tpope/vim-surround'
 Plugin 'vim-ruby/vim-ruby'
-Plugin 'a.vim'
-Plugin 'taglist.vim'
+Plugin 'tpope/vim-rails'
+" Plugin 'fatih/vim-go'
 Plugin 'plasticboy/vim-markdown'
+Plugin 'slim-template/vim-slim.git'
+Plugin 'tpope/vim-endwise'
+
+" 语法检查
+Plugin 'scrooloose/syntastic'
 
 call vundle#end()
 filetype plugin indent on
 
+syntax enable
 
 "设置语法高亮的配色
 if has("gui_running")
@@ -129,39 +144,8 @@ set nobackup
 let mapleader=","
 let g:mapleader=","
 
-""""""""""""""""""""""""""""""
-" taglist 插件的设置
-""""""""""""""""""""""""""""""
-if has('mac')
-    let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
-endif
-
-" 不同时显示多个文件的 tag ，只显示当前文件的
-let Tlist_Show_One_File=1
-
-" 如果 taglist 窗口是最后一个窗口，则退出 vim
-let Tlist_Exit_OnlyWindow=1
-
-"让当前不被编辑的文件的方法列表自动折叠起来 
-let Tlist_File_Fold_Auto_Close=1
-
-"不显示taglist菜单
-let Tlist_Show_Menu=0
-
-let Tlist_Use_Right_Window = 1         "在右侧窗口中显示taglist窗口 
-
-let Tlist_WinHeight = 20
-noremap  <F3> :TlistToggle<cr>
-inoremap <F3> <esc>:TlistToggle<cr>
-
 
 "autocmd vimenter * WMToggle
-
-""""""""""""""""""""""""""""""
-" netrw插件的快捷键
-""""""""""""""""""""""""""""""
-let g:netrw_winsize = 30
-nmap <silent> <leader>fe :Sexplore!<cr>
 
 """"""""""""""""""""""""""""""
 " NERDTree插件配置
@@ -178,11 +162,12 @@ let NERDTreeMinimalUI = 1
 let NERDTreeDirArrows = 1
 
 """"""""""""""""""""""""""""""
-" Powerline 配置
+" lightline 配置
 """"""""""""""""""""""""""""""
-set nocompatible   " Disable vi-compatibility
-set laststatus=2   " Always show the statusline
-set encoding=utf-8 " Necessary to show unicode glyphs
+
+let g:lightline = {
+      \ 'colorscheme': 'solarized_dark',
+      \ }
 
 """"""""""""""""""""""""""""""
 " ack.vim 配置
