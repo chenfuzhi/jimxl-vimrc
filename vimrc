@@ -164,7 +164,7 @@ let NERDTreeDirArrows = 1
 """"""""""""""""""""""""""""""
 " lightline 配置
 """"""""""""""""""""""""""""""
-
+set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'solarized_dark',
       \ }
