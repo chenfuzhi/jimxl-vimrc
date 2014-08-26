@@ -168,6 +168,7 @@ let NERDTreeDirArrows = 1
 let g:lightline = {
       \ 'colorscheme': 'solarized_dark',
       \ }
+set laststatus=2
 
 """"""""""""""""""""""""""""""
 " ack.vim 配置
