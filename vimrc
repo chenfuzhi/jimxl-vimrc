@@ -18,6 +18,9 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-repeat'
+
 " Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-surround'
@@ -26,6 +29,9 @@ Plugin 'a.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Lokaltog/vim-easymotion'
 
+" git
+
+Plugin 'tpope/vim-fugitive'
 
 " 2. ui相关
 Plugin 'itchyny/lightline.vim'
@@ -44,9 +50,15 @@ Plugin 'tpope/vim-rails'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-bundler'
 
 " 语法检查
 Plugin 'scrooloose/syntastic'
+
+" 工具
+Plugin 'Shougo/vimshell.vim'
+
+
 
 call vundle#end()
 filetype plugin indent on
