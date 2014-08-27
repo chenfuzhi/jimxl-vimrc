@@ -183,9 +183,11 @@ let g:lightline = {
 set laststatus=2
 
 """"""""""""""""""""""""""""""
-" ack.vim 配置
+" vim-indent-guides 配置
 """"""""""""""""""""""""""""""
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 " 去掉菜单栏和工具栏
 set guioptions-=m
@@ -199,8 +201,8 @@ set guioptions-=L
 set cursorline
 
 set expandtab
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set showmatch
 set incsearch
 
