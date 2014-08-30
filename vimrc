@@ -18,6 +18,9 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
+Plugin 'godlygeek/tabular'
+Plugin 'tpope/vim-repeat'
+
 " Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 Plugin 'tpope/vim-surround'
@@ -26,6 +29,9 @@ Plugin 'a.vim'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Lokaltog/vim-easymotion'
 
+" git
+
+Plugin 'tpope/vim-fugitive'
 
 " 2. ui相关
 Plugin 'itchyny/lightline.vim'
@@ -44,9 +50,15 @@ Plugin 'tpope/vim-rails'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'tpope/vim-endwise'
+Plugin 'tpope/vim-bundler'
 
 " 语法检查
 Plugin 'scrooloose/syntastic'
+
+" 工具
+Plugin 'Shougo/vimshell.vim'
+
+
 
 call vundle#end()
 filetype plugin indent on
@@ -168,11 +180,14 @@ set laststatus=2
 let g:lightline = {
       \ 'colorscheme': 'solarized_dark',
       \ }
+set laststatus=2
 
 """"""""""""""""""""""""""""""
-" ack.vim 配置
+" vim-indent-guides 配置
 """"""""""""""""""""""""""""""
-let g:ackprg="ack-grep -H --nocolor --nogroup --column"
+let g:indent_guides_guide_size = 1
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
 
 " 去掉菜单栏和工具栏
 set guioptions-=m
@@ -186,8 +201,8 @@ set guioptions-=L
 set cursorline
 
 set expandtab
-set softtabstop=4
-set shiftwidth=4
+set softtabstop=2
+set shiftwidth=2
 set showmatch
 set incsearch
 
