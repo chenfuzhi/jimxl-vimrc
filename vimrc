@@ -57,6 +57,7 @@ Plugin 'scrooloose/syntastic'
 
 " 工具
 Plugin 'Shougo/vimshell.vim'
+Plugin 'tpope/vim-rvm'
 
 
 
@@ -90,7 +91,10 @@ function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
+" http://rvm.io/integration/vim 修复mac下vim中用rvm的问题
 
+set shell=/bin/sh
+autocmd BufEnter * Rvm
 
 " 自动缩进
 set autoindent
@@ -178,7 +182,7 @@ let NERDTreeDirArrows = 1
 """"""""""""""""""""""""""""""
 
 let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
+      \ 'colorscheme': 'solarized_dark'
       \ }
 set laststatus=2
 
