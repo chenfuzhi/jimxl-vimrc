@@ -19,7 +19,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-repeat'
 
 " Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
@@ -57,8 +57,8 @@ Plugin 'scrooloose/syntastic'
 
 " 工具
 Plugin 'Shougo/vimshell.vim'
+Plugin 'Shougo/vimproc.vim'
 Plugin 'tpope/vim-rvm'
-
 
 
 call vundle#end()

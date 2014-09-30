@@ -61,15 +61,15 @@ def install_needed_software
     end
 end
 
-# def compile_vimprocess
-#     Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc')) do
-#       if os == "linux"
-#           system("make -f make_unix.mak")
-#         elsif os == 'mac'
-#             system("make -f make_mac.mak")
-#         end
-#     end
-# end
+def compile_vimprocess
+    Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc.vim')) do
+      if os == "linux"
+          system("make -f make_unix.mak")
+        elsif os == 'mac'
+          system("make -f make_mac.mak")
+        end
+    end
+end
 #
 #
 # def compile_youcompleteme
@@ -88,7 +88,7 @@ task :install do
     install_needed_software
     install_vimrc
     install_vundle
-    # compile_vimprocess
+    compile_vimprocess
     # compile_youcompleteme
 end
 
