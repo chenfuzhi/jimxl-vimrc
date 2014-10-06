@@ -62,6 +62,7 @@ Plugin 'Shougo/vimshell.vim'
 Plugin 'Shougo/vimproc.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-rvm'
+Plugin 'majutsushi/tagbar'
 
 
 call vundle#end()
@@ -207,6 +208,11 @@ let g:vim_tags_auto_generate = 1
 let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_auto_trigger = 0
+
+""""""""""""""""""""""""""""""
+" majutsushi/tagbar 配置
+""""""""""""""""""""""""""""""
+nmap <F3> :TagbarToggle<CR>
 
 " 去掉菜单栏和工具栏
 set guioptions-=m
