@@ -2,135 +2,135 @@
 require 'fileutils'
 
 def os
-    if RUBY_PLATFORM =~ /win32/
-        return "windows"
-    elsif RUBY_PLATFORM =~ /linux/
-        return "linux"
-    elsif RUBY_PLATFORM =~ /darwin/
-        return "mac"
-    elsif RUBY_PLATFORM =~ /freebsd/
-        return "freebsd"
-    else
-        return ""
-    end
+  if RUBY_PLATFORM =~ /win32/
+    return "windows"
+  elsif RUBY_PLATFORM =~ /linux/
+    return "linux"
+  elsif RUBY_PLATFORM =~ /darwin/
+    return "mac"
+  elsif RUBY_PLATFORM =~ /freebsd/
+    return "freebsd"
+  else
+    return ""
+  end
 end
 
 
 def install_vundle
-    FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
+  FileUtils.mkdir_p File.join(Dir.home, '.vim/bundle/')
+  if os == "linux"
+    system("cp -r vundle ~/.vim/bundle/Vundle.vim")
+    system("vim +PluginInstall +qall")
+  elsif os == 'mac'
     FileUtils.cp_r 'vundle', File.join(Dir.home, '.vim/bundle/Vundle.vim')
-    if os == "linux"
-        system("vim +PluginInstall +qall")
-    elsif os == 'mac'
-        system("mvim +PluginInstall +qall")
-    end
+    system("mvim +PluginInstall +qall")
+  end
 end
 
 def install_vimrc
-    FileUtils.cp 'vimrc', File.join(Dir.home, '.vimrc')
+  FileUtils.cp 'vimrc', File.join(Dir.home, '.vimrc')
 end
 
 def mkvimdir path
-    real_path = File.join(Dir.home, ".vim/#{path}")
-    FileUtils.mkdir_p real_path unless File.directory?(real_path)
+  real_path = File.join(Dir.home, ".vim/#{path}")
+  FileUtils.mkdir_p real_path unless File.directory?(real_path)
 end
 
 def install_go_syntax
-    ['autoload/go/', '/ftplugin/go/', 'ftdetect/', 'syntax/', 'indent/', 'plugin/', 'syntax/'].each{|path| mkvimdir(path) }
-    FileUtils.cp 'golang/autoload/go/complete.vim', File.join(Dir.home, '.vim/autoload/go/')
-    FileUtils.cp Dir['golang/ftplugin/go/*'], File.join(Dir.home, '.vim/ftplugin/go/')
-    FileUtils.cp 'golang/ftdetect/gofiletype.vim', File.join(Dir.home, '.vim/ftdetect/')
-    FileUtils.cp 'golang/syntax/go.vim', File.join(Dir.home, '.vim/syntax/')
-    FileUtils.cp 'golang/indent/go.vim', File.join(Dir.home, '.vim/indent/')
-    FileUtils.cp 'golang/plugin/godoc.vim', File.join(Dir.home, '.vim/plugin/godoc.vim')
-    FileUtils.cp 'golang/syntax/godoc.vim', File.join(Dir.home, '.vim/syntax/godoc.vim')
+  ['autoload/go/', '/ftplugin/go/', 'ftdetect/', 'syntax/', 'indent/', 'plugin/', 'syntax/'].each{|path| mkvimdir(path) }
+  FileUtils.cp 'golang/autoload/go/complete.vim', File.join(Dir.home, '.vim/autoload/go/')
+  FileUtils.cp Dir['golang/ftplugin/go/*'], File.join(Dir.home, '.vim/ftplugin/go/')
+  FileUtils.cp 'golang/ftdetect/gofiletype.vim', File.join(Dir.home, '.vim/ftdetect/')
+  FileUtils.cp 'golang/syntax/go.vim', File.join(Dir.home, '.vim/syntax/')
+  FileUtils.cp 'golang/indent/go.vim', File.join(Dir.home, '.vim/indent/')
+  FileUtils.cp 'golang/plugin/godoc.vim', File.join(Dir.home, '.vim/plugin/godoc.vim')
+  FileUtils.cp 'golang/syntax/godoc.vim', File.join(Dir.home, '.vim/syntax/godoc.vim')
 end
 
 def install_needed_software
-    if os == "linux"
-        system("sudo apt-get install wmctrl")
-        system("sudo apt-get install cmake")
-        system("sudo apt-get install python-dev")
-        system("sudo apt-get install ack-grep")
-        system('apt-get install silversearcher-ag')
-    elsif os == 'mac'
-        system('brew install ack')
-        system('brew install wmctrl')
-        system('brew install ctags')
-        system('brew install the_silver_searcher')
-    end
+  if os == "linux"
+    system("sudo apt-get install wmctrl")
+    system("sudo apt-get install cmake")
+    system("sudo apt-get install python-dev")
+    system("sudo apt-get install ack-grep")
+    system('sudo apt-get install silversearcher-ag')
+  elsif os == 'mac'
+    system('brew install ack')
+    system('brew install wmctrl')
+    system('brew install ctags')
+    system('brew install the_silver_searcher')
+  end
 end
 
 def compile_vimprocess
-    Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc.vim')) do
+  Dir.chdir(File.join(Dir.home, '.vim/bundle/vimproc.vim')) do
+    if os == "linux"
+      system("make -f make_unix.mak")
+    elsif os == 'mac'
+      system("make -f make_mac.mak")
+    end
+  end
+end
+
+def compile_youcompleteme
+    Dir.chdir(File.join(Dir.home, '.vim/bundle/YouCompleteMe')) do
       if os == "linux"
-          system("make -f make_unix.mak")
-        elsif os == 'mac'
-          system("make -f make_mac.mak")
-        end
+        system("./install.sh")
+      elsif os == 'mac'
+        system("./install.sh --clang-completer")
+      end
     end
 end
-#
-#
-# def compile_youcompleteme
-#     Dir.chdir(File.join(Dir.home, '.vim/bundle/YouCompleteMe')) do
-#       if os == "linux"
-#           system("./install.sh")
-#         elsif os == 'mac'
-#             system("./install.sh --clang-completer")
-#         end
-#     end
-# end
 
 desc '安装vim插件以及vim配置文件'
 task :install do
-    # install_go_syntax
-    install_needed_software
-    install_vimrc
-    install_vundle
-    compile_vimprocess
-    # compile_youcompleteme
+  # install_go_syntax
+  install_needed_software
+  install_vimrc
+  install_vundle
+  compile_vimprocess
+  compile_youcompleteme
 end
 
 
 desc '清除安装的插件和配置文件'
 task :uninstall do
-    FileUtils.rm_rf File.join(Dir.home, '.vimrc'), File.join(Dir.home, '.vim')
+  FileUtils.rm_rf File.join(Dir.home, '.vimrc'), File.join(Dir.home, '.vim')
 end
 
 desc '更新已经安装的插件,安装新添加的插件'
 task :update do
-    install_vimrc
-    install_go_syntax
-    if os == "linux"
-        system("vim +PluginUpdate +PluginClean! +qall")
-    elsif os == 'mac'
-        system("mvim +PluginUpdate +PluginClean! +qall")
-    end
+  install_vimrc
+  install_go_syntax
+  if os == "linux"
+    system("vim +PluginUpdate +PluginClean! +qall")
+  elsif os == 'mac'
+    system("mvim +PluginUpdate +PluginClean! +qall")
+  end
 end
 
 desc '安装新添加的插件'
 task :install_new_plugin do
-    install_vimrc
-    if os == "linux"
-        system("vim +PluginInstall +qall")
-    elsif os == 'mac'
-        system("mvim +PluginInstall +qall")
-    end
+  install_vimrc
+  if os == "linux"
+    system("vim +PluginInstall +qall")
+  elsif os == 'mac'
+    system("mvim +PluginInstall +qall")
+  end
 end
 
 desc '更新vimrc文件'
 task :update_vimrc do
-    install_vimrc
+  install_vimrc
 end
 
 desc '安装中文帮助'
 task :install_cn_doc do
-    #system("wget http://prdownloads.sourceforge.net/vimcdoc/vimcdoc-1.8.0.tar.gz") unless File.file?('vimcdoc-1.8.0.tar.gz')
-    system("wget http://iweb.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-1.9.0.tar.gz") unless File.file?('vimcdoc-1.9.0.tar.gz')
+  #system("wget http://prdownloads.sourceforge.net/vimcdoc/vimcdoc-1.8.0.tar.gz") unless File.file?('vimcdoc-1.8.0.tar.gz')
+  system("wget http://iweb.dl.sourceforge.net/project/vimcdoc/vimcdoc/vimcdoc-1.9.0.tar.gz") unless File.file?('vimcdoc-1.9.0.tar.gz')
 
-    system("tar zxvf vimcdoc-1.9.0.tar.gz")
-    Dir.chdir('vimcdoc-1.9.0') do
-        system('./vimcdoc.sh -i')
-    end
+  system("tar zxvf vimcdoc-1.9.0.tar.gz")
+  Dir.chdir('vimcdoc-1.9.0') do
+    system('./vimcdoc.sh -i')
+  end
 end
