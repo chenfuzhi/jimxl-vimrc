@@ -19,7 +19,7 @@ Plugin 'garbas/vim-snipmate'
 Plugin 'honza/vim-snippets'
 
 Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-repeat'
+" Plugin 'tpope/vim-repeat'
 
 " Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
@@ -54,10 +54,15 @@ Plugin 'tpope/vim-bundler'
 
 " 语法检查
 Plugin 'scrooloose/syntastic'
+Plugin 'szw/vim-tags'
+Plugin 'tpope/vim-dispatch'
 
 " 工具
 Plugin 'Shougo/vimshell.vim'
-
+Plugin 'Shougo/vimproc.vim'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'tpope/vim-rvm'
+Plugin 'majutsushi/tagbar'
 
 
 call vundle#end()
@@ -90,7 +95,10 @@ function! MaximizeWindow()
     silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
+" http://rvm.io/integration/vim 修复mac下vim中用rvm的问题
 
+set shell=/bin/sh
+autocmd BufEnter * Rvm
 
 " 自动缩进
 set autoindent
@@ -178,7 +186,7 @@ let NERDTreeDirArrows = 1
 """"""""""""""""""""""""""""""
 set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'solarized_dark',
+      \ 'colorscheme': 'solarized_dark'
       \ }
 set laststatus=2
 
@@ -188,6 +196,23 @@ set laststatus=2
 let g:indent_guides_guide_size = 1
 let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_exclude_filetypes = ['help', 'nerdtree']
+
+""""""""""""""""""""""""""""""
+" szw/vim-tags 配置
+""""""""""""""""""""""""""""""
+let g:vim_tags_auto_generate = 1
+
+""""""""""""""""""""""""""""""
+" Valloric/YouCompleteMe 配置
+""""""""""""""""""""""""""""""
+let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_collect_identifiers_from_tags_files = 1
+let g:ycm_auto_trigger = 0
+
+""""""""""""""""""""""""""""""
+" majutsushi/tagbar 配置
+""""""""""""""""""""""""""""""
+nmap <F3> :TagbarToggle<CR>
 
 " 去掉菜单栏和工具栏
 set guioptions-=m
@@ -210,11 +235,11 @@ set winaltkeys=no
 
 filetype plugin on
 
-" map <C-c> "+y
-" imap <C-v> <Esc>"+gpa
-" map <C-v> "+gp
-" map <C-S> :w<CR>
-" imap <C-S> <Esc>:w<CR>a
+map <C-c> "+y
+imap <C-v> <Esc>"+gpa
+map <C-v> "+gp
+map <C-S> :w<CR>
+imap <C-S> <Esc>:w<CR>a
 
 map <C-A> <Home>
 imap <C-A> <Home>
