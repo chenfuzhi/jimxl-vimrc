@@ -170,6 +170,10 @@ let g:mapleader=","
 noremap  <F2> :NERDTreeToggle<cr>
 inoremap <F2> <esc>:NERDTreeToggle<cr>
 
+" Current file in nerdtree  
+map <F9> :NERDTreeFind<CR>
+inoremap <F9> <esc>:NERDTreeFind<cr>
+
 au Filetype nerdtree setlocal nolist
 
 let NERDTreeHighlightCursorline=1
@@ -232,6 +236,9 @@ set incsearch
 set winaltkeys=no
 
 filetype plugin on
+
+
+au BufRead,BufNewFile *.jbuilder set ft=ruby syn=ruby
 
 " map <C-c> "+y
 " imap <C-v> <Esc>"+gpa
