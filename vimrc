@@ -119,7 +119,7 @@ else
 endif
 
 "行间距，如果默认值太小，代码会非常纠结
-set linespace=4
+set linespace=5
 
 "用<>调整缩进时的长度
 set shiftwidth=4
@@ -128,7 +128,7 @@ set shiftwidth=4
 set tabstop=4
 
 "显示行号
-set number
+" set number
 
 "行号栏的宽度
 set numberwidth=4
@@ -144,6 +144,11 @@ set ruler
 
 "分割窗口时保持相等的宽/高
 set equalalways
+
+" 设置分割
+" set fillchars+=vert:\|
+hi vertsplit guifg=fg guibg=bg gui=NONE
+
 
 "匹配括号的规则，增加针对html的<>
 set matchpairs=(:),{:},[:],<:>
@@ -273,4 +278,8 @@ cnoremap <C-l> <C-C>:tabnext<CR>
 noremap <C-H> :<C-U>tabprevious<CR>
 inoremap <C-H> <C-\><C-N>:tabprevious<CR>
 cnoremap <C-H> <C-C>:tabprevious<CR>
+
+noremap  <F3> :set invnumber<CR>
+inoremap <F3> <esc>:set invnumber<CR>
+
 
