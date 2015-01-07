@@ -88,8 +88,8 @@ task :install do
   install_needed_software
   install_vimrc
   install_vundle
-  compile_vimprocess
-  compile_youcompleteme
+  # compile_vimprocess
+  # compile_youcompleteme
 end
 
 
