@@ -25,17 +25,17 @@ Plugin 'FelikZ/ctrlp-py-matcher'
 " Plugin 'mileszs/ack.vim'
 Plugin 'rking/ag.vim'
 " Plugin 'tpope/vim-surround'
-Plugin 'szw/vim-ctrlspace'
+" Plugin 'szw/vim-ctrlspace'
 " Plugin 'a.vim'
 Plugin 'tomtom/tcomment_vim'
-Plugin 'Lokaltog/vim-easymotion'
+" Plugin 'Lokaltog/vim-easymotion'
 
 " git
 
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 
 " 2. ui相关
-Plugin 'itchyny/lightline.vim'
+" Plugin 'itchyny/lightline.vim'
 Plugin 'altercation/vim-colors-solarized'
 
 " vim 对齐显示
@@ -51,15 +51,15 @@ Plugin 'tpope/vim-rails'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'slim-template/vim-slim.git'
 Plugin 'tpope/vim-endwise'
-Plugin 'tpope/vim-bundler'
+" Plugin 'tpope/vim-bundler'
 
 " 语法检查
-Plugin 'scrooloose/syntastic'
+" Plugin 'scrooloose/syntastic'
 
 " 工具
 " Plugin 'Shougo/vimshell.vim'
 " Plugin 'Shougo/vimproc.vim'
-Plugin 'tpope/vim-rvm'
+" Plugin 'tpope/vim-rvm'
 
 
 call vundle#end()
@@ -67,7 +67,7 @@ filetype plugin indent on
 
 syntax enable
 
-"设置语法高亮的配色
+" 设置语法高亮的配色
 if has("gui_running")
     set background=dark
     colorscheme solarized
@@ -79,23 +79,23 @@ endif
 " 实现窗口最大化
 
 if has("gui")
-    if has('win32')
-        au GUIEnter * simalt ~x
-    elseif has("gui_macvim")
-        set lines=999 columns=999
-    elseif has("gui")
-        au GUIEnter * call MaximizeWindow()
-    endif
+  if has('win32')
+      au GUIEnter * simalt ~x
+  elseif has("gui_macvim")
+      set lines=999 columns=999
+  elseif has("gui")
+      au GUIEnter * call MaximizeWindow()
+  endif
 end
 
 function! MaximizeWindow()
-    silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
+  silent !wmctrl -r :ACTIVE: -b add,maximized_vert,maximized_horz
 endfunction
 
 " http://rvm.io/integration/vim 修复mac下vim中用rvm的问题
 
-set shell=/bin/sh
-autocmd BufEnter * Rvm
+" set shell=/bin/sh
+" autocmd BufEnter * Rvm
 
 " 自动缩进
 set autoindent
@@ -113,19 +113,19 @@ set helplang=cn,en              " 帮助语言
 
 "GUI界面里的字体，默认有抗锯齿
 if has("mac")
-    set guifont=Monaco:h14
+    set guifont=Monaco:h12
 else
     set guifont=DejaVu\ Sans\ Mono\ 12
 endif
 
 "行间距，如果默认值太小，代码会非常纠结
-set linespace=5
+" set linespace=4
 
 "用<>调整缩进时的长度
-set shiftwidth=4
+set shiftwidth=2
 
 "制表符的长度，统一为4个空格的宽度
-set tabstop=4
+set tabstop=2
 
 "显示行号
 " set number
@@ -191,10 +191,10 @@ let NERDTreeDirArrows = 1
 " lightline 配置
 """"""""""""""""""""""""""""""
 
-let g:lightline = {
-      \ 'colorscheme': 'solarized_dark'
-      \ }
-set laststatus=2
+" let g:lightline = {
+"      \ 'colorscheme': 'solarized_dark'
+"      \ }
+" set laststatus=2
 
 """"""""""""""""""""""""""""""
 " CtrlP 配置
