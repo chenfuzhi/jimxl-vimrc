@@ -61,6 +61,11 @@ Plugin 'tpope/vim-endwise'
 " Plugin 'Shougo/vimproc.vim'
 " Plugin 'tpope/vim-rvm'
 
+" 设置备份文件的路径
+
+set undodir=~/.vim/.undo/
+set backupdir=~/.vim/.backup/
+set directory=~/.vim/.swp/
 
 call vundle#end()
 filetype plugin indent on
