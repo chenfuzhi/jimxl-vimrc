@@ -59,7 +59,7 @@ Plugin 'tpope/vim-endwise'
 " 工具
 " Plugin 'Shougo/vimshell.vim'
 " Plugin 'Shougo/vimproc.vim'
-" Plugin 'tpope/vim-rvm'
+Plugin 'tpope/vim-rvm'
 
 " 设置备份文件的路径
 
@@ -99,8 +99,8 @@ endfunction
 
 " http://rvm.io/integration/vim 修复mac下vim中用rvm的问题
 
-" set shell=/bin/sh
-" autocmd BufEnter * Rvm
+set shell=/bin/sh
+autocmd BufEnter * Rvm
 
 " 自动缩进
 set autoindent
